@@ -1,9 +1,5 @@
-package com.example.project.direction.controller;
+package com.example.project.user;
 
-import com.example.project.direction.dto.UserDto;
-import com.example.project.direction.entity.UserEntity;
-import com.example.project.direction.repository.UserRepository;
-import com.example.project.direction.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

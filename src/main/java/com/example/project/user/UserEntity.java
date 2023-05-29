@@ -1,6 +1,5 @@
-package com.example.project.direction.entity;
+package com.example.project.user;
 
-import com.example.project.direction.dto.UserDto;
 import lombok.*;
 
 import javax.persistence.*;

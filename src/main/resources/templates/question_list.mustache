@@ -1,0 +1,106 @@
+{{>layout/header}}
+{{>nav}}
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<div class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody >
+        {{#paging}}
+            <tr>
+                <td>{{id}}</td>
+                <td>
+                    <a href="/question/detail/{{id}}">{{subject}}</a>
+
+                    <span class="text-danger small ms-2">
+                          {{answerList.size}}
+                    </span>
+
+                </td>
+                <td>{{createDate}}</td>
+            </tr>
+        {{/paging}}
+        </tbody>
+    </table>
+
+    <div>
+        <ul class="pagination justify-content-center">
+
+            {{#paging.hasPrevious}}
+            <li class="page-item">
+                <a class="page-link" id="previous" href="">
+                    <span>이전</span>
+                </a>
+            </li>
+            {{/paging.hasPrevious}}
+
+            <li class="page-item">
+                <a class="page-link" id="number" data-value="{{paging.number}}" href="?page={{paging.number}}"></a>
+            </li>
+
+            {{#paging.hasNext}}
+            <li class="page-item" >
+                <a class="page-link" id="next" href="">
+                    <span>다음</span>
+                </a>
+            </li>
+            {{/paging.hasNext}}
+        </ul>
+    </div>
+
+
+    <a href="/question/create" role="button" class="btn btn-primary">질문 등록하기</a>
+
+</div>
+
+{{^paging.hasNext}}
+    {{^paging.hasPrevious}}
+        <script>
+        window.onload = function () {
+            let num = document.getElementById("number").getAttribute('data-value');
+            let sang = document.getElementById("number").innerHTML = 1+Number(num);
+        }
+    </script>
+    {{/paging.hasPrevious}}
+{{/paging.hasNext}}
+
+{{^paging.hasNext}}
+    {{#paging.hasPrevious}}
+    <script>
+        window.onload = function () {
+            let num = document.getElementById("number").getAttribute('data-value');
+            let sang = document.getElementById("number").innerHTML = 1+Number(num);
+
+            let pre
+
+            pre = Number(num) -1;
+
+            document.getElementById("previous").href = "?page="+pre;
+        }
+    </script>
+    {{/paging.hasPrevious}}
+{{/paging.hasNext}}
+
+{{#paging.hasNext}}
+    <script>
+        window.onload = function () {
+            let num = document.getElementById("number").getAttribute('data-value');
+            let sang = document.getElementById("number").innerHTML = 1+Number(num);
+            let nex
+
+            nex = Number(num) + 1;
+            pre = Number(num) - 1;
+
+            document.getElementById("next").href = "?page="+nex;
+            document.getElementById("previous").href = "?page="+pre;
+        }
+    </script>
+{{/paging.hasNext}}
+
+{{>layout/footer}}

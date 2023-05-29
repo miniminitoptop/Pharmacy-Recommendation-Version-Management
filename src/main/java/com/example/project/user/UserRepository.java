@@ -1,6 +1,6 @@
-package com.example.project.direction.repository;
+package com.example.project.user;
 
-import com.example.project.direction.entity.UserEntity;
+import com.example.project.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
